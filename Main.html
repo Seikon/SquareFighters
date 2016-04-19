@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="Main.css"/>
+    <script src="http://code.createjs.com/easeljs-0.7.0.min.js"></script>
+    <script src="SquareFighter.js"></script>
+    <script src="Kunai.js"></script>
+    <script src ="Weapon.js"></script>
+    <script src="Shuriken.js"></script>
+    <script src="Punch.js"></script>
+    <script src="Kick.js"></script>
+    <script src="Type.js"></script>
+    <script src="Fire.js"></script>
+    <script src="Water.js"></script>
+    <script src="Electric.js"></script>
+    <script src="PowerObject.js"></script>
+    <script src ="GameController.js"></script>
+
+    <script type="text/javascript">
+
+        function init() {
+            var canvas = document.getElementById("game");
+            var juego = new GameController(canvas, 1000, 368, 50);
+            juego.addSquareFighter(new SquareFighter(500, 654, 50, 50, 50, 704, 1536, "#ffff00", "WATER", 50000,100,P1));
+            juego.addSquareFighter(new SquareFighter(1200, 654, 50, 50, 50, 704, 1536, "#ffff00", "WATER", 50000,100,P2));
+            juego.init();
+        }
+    
+    </script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Fighter Game</title>
+</head>
+<body onload="init()">
+    <canvas id="game" width="1536" height="704">
+
+    </canvas>
+</body>
+</html>

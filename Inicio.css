@@ -1,0 +1,37 @@
+﻿header {
+
+    text-align: center;
+    font-size: 4em;
+    font-family: 'Buxton Sketch';
+    height: 2em;
+    color: gray;
+    width: 100%;
+}
+
+.mainContent {
+
+
+    height: 100%;
+    width: 100%;
+    text-align:center;
+}
+
+.btnInteractive {
+
+    border: 0.5em inset silver;
+    width: 20em;
+    height: 3em;
+    text-align: center;
+    margin-left: 40%;
+    border-bottom-left-radius: 2em;
+    color: gray;
+    font-size: 1.2em;
+    font-family: 'Buxton Sketch';
+}
+
+.btnInteractive:hover {
+
+     background-color: ActiveCaption;
+}
+
+
