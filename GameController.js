@@ -17,6 +17,7 @@ function GameController(canvas, limitW, limitH, FPS,showBars) {
     this.p1;
     this.p2;
     this.showBars = showBars;
+    this.soundHandler = new SoundHandler();
     this.dialogs = [];
 }
 
@@ -260,10 +261,11 @@ GameController.prototype.colisions = function () {
                             if (selfGame.squareFighters[sqCh].isDefended && selfGame.squareFighters[sqCh].view != selfGame.squareFighters[sq].view) {
                                 selfGame.squareFighters[sqCh].lifePoints -= PUNCH_DAMAGE / 4;
                                 selfGame.squareFighters[sqCh].x += 5;
+                                selfGame.soundHandler.playAudio("Audio/punch.wav");
                             }
                             else
                                 selfGame.squareFighters[sqCh].lifePoints -= PUNCH_DAMAGE;
-                            
+                                selfGame.soundHandler.playAudio("Audio/punch.wav");
 
 
                         }
@@ -366,6 +368,7 @@ GameController.prototype.init = function () {
                     if (!selfGame.p1.salto) {
                         selfGame.p1.salto = true;
                         selfGame.p1.topeSalto = selfGame.p1.y - JUMP_FORCE;
+                        selfGame.soundHandler.playAudio("Audio/jump.wav");
                     }
                     break;
 
@@ -418,6 +421,7 @@ GameController.prototype.init = function () {
                     if (!selfGame.p2.salto) {
                         selfGame.p2.salto = true;
                         selfGame.p2.topeSalto = selfGame.p2.y - JUMP_FORCE;
+                        selfGame.soundHandler.playAudio("Audio/jump.wav");
                     }
                     break;
 
@@ -667,8 +671,6 @@ GameController.prototype.init = function () {
         }
 
     }, true);
-
-
 }
 
 GameController.prototype.returnPlayer = function (player) {
