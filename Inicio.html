@@ -4,15 +4,42 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <link rel="stylesheet" href="Inicio.css"/>
     <title></title>
+
+     <script src="SquareFighter.js"></script>
+    <script src="Kunai.js"></script>
+    <script src ="Weapon.js"></script>
+    <script src="Shuriken.js"></script>
+    <script src="Punch.js"></script>
+    <script src="Kick.js"></script>
+    <script src="Type.js"></script>
+    <script src="Fire.js"></script>
+    <script src="Water.js"></script>
+    <script src="Electric.js"></script>
+    <script src="PowerObject.js"></script>
+    <script src ="GameController.js"></script>
+
+        <script type="text/javascript">
+
+            function init() {
+                var canvas = document.getElementById("example");
+                var juego = new GameController(canvas, 1000, 368, 50,true);
+                juego.addSquareFighter(new SquareFighter(300, 250, 50, 50, 50, 300, 900, "#cc3300", "FIRE", 50000, 100, P1));
+                juego.addSquareFighter(new SquareFighter(300, 250, 50, 50, 50, 300, 900, "#cc3300", "FIRE", 50000, 100, P2));
+                juego.init();
+            }
+
+    </script>
+
 </head>
-<body>
+<body onload="init()">
     <header>
         Square Fighters
     </header>
 
     <div class="mainContent">
-        <div class="btnInteractive"><p>Comienza la avenura</p></div> <br />
-        <div class="btnInteractive"><p>Mejor vuelvo a Facebook...</p></div>
+        <div class="btnInteractive" role="button"><p>Comienza la avenura</p></div> <br /> <br /> <br />
+        <div class="btnInteractive"><p>Mejor vuelvo a Facebook...</p></div> <br /> <br /> <br />
+        <canvas id="example" height="300" width ="900"></canvas>
     </div>
     <br /> <br />
     <div class="mainContent">

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+
+    <script type="text/javascript">
+
+
+        function init() {
+
+            var canvas = document.getElementById("dialog");
+            var context = canvas.getContext("2d");
+            context.fillStyle = "green";
+
+            context.beginPath();
+
+            context.moveTo(100, 100);
+            context.lineTo(200, 100);
+            context.lineTo(200, 550);
+            context.lineTo(190, 200);
+            context.lineTo(100, 200);
+            context.lineTo(100,100);
+
+            context.fill();
+
+
+        }
+
+    </script>
+
+</head>
+<body onload="init()">
+    <canvas id="dialog">
+
+    </canvas>
+</body>
+</html>

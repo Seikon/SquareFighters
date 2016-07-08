@@ -1,7 +1,7 @@
 ﻿header {
 
     text-align: center;
-    font-size: 4em;
+    font-size: 6em;
     font-family: 'Buxton Sketch';
     height: 2em;
     color: gray;
@@ -31,7 +31,14 @@
 
 .btnInteractive:hover {
 
-     background-color: ActiveCaption;
+     background-color: darkgrey;
+     color: white;
+     border-color: orange;
+     transition: background-color linear 2s, color 2s, border-color 5s;
+}
+
+#example {
+
 }
 
 

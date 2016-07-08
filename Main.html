@@ -20,7 +20,7 @@
 
         function init() {
             var canvas = document.getElementById("game");
-            var juego = new GameController(canvas, 1000, 368, 50);
+            var juego = new GameController(canvas, 1000, 368, 50,true);
             juego.addSquareFighter(new SquareFighter(500, 654, 50, 50, 50, 704, 1536, "#ffff00", "WATER", 50000,100,P1));
             juego.addSquareFighter(new SquareFighter(1200, 654, 50, 50, 50, 704, 1536, "#ffff00", "WATER", 50000,100,P2));
             juego.init();

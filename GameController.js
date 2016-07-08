@@ -2,7 +2,7 @@
 var POWER_BAR_HEIGHT = 10;
 var JUMP_FORCE = 500;
 
-function GameController(canvas, limitW, limitH, FPS) {
+function GameController(canvas, limitW, limitH, FPS,showBars) {
 
     this.squareFighters = [];
     this.stage = canvas;
@@ -16,6 +16,7 @@ function GameController(canvas, limitW, limitH, FPS) {
     this.selfGame = this;
     this.p1;
     this.p2;
+    this.showBars = showBars;
     this.dialogs = [];
 }
 
@@ -49,8 +50,13 @@ GameController.prototype.draw = function () {
         selfGame.checkKicking(selfGame.sqChecking);
         //draw the sq
         selfGame.drawSquareFighter(selfGame.sqChecking);
-        selfGame.drawSquareLifeBar(selfGame.sqChecking, selfGame.con)
-        selfGame.drawSquarePowerBar(selfGame.sqChecking, selfGame.con)
+        //draw clothes
+        selfGame.drawSquareFighterClothes(selfGame.sqChecking);
+        
+        if (selfGame.showBars) {
+            selfGame.drawSquareLifeBar(selfGame.sqChecking, selfGame.con)
+            selfGame.drawSquarePowerBar(selfGame.sqChecking, selfGame.con)
+        }
         //check dropped objects
         selfGame.checkObjectsDroped(selfGame.sqChecking);
         //check powers
@@ -67,9 +73,6 @@ GameController.prototype.drawSquareFighter = function (sq) {
     selfGame.stageContext.fillStyle = sq.color;
     selfGame.stageContext.fillRect(sq.x, sq.y, sq.width, sq.height);
     selfGame.stageContext.stroke();
-
-    selfGame.stageContext.drawImage(sq.boca, sq.bocaX, sq.bocaY);
-    selfGame.stageContext.drawImage(sq.ojos, sq.ojosX, sq.ojosY);
 
     if (sq.isDefended) {
 
@@ -99,6 +102,28 @@ GameController.prototype.drawSquareFighter = function (sq) {
 
 }
 
+GameController.prototype.drawSquareFighterClothes = function (sq) {
+
+    selfGame.stageContext.drawImage(sq.boca, sq.bocaX, sq.bocaY);
+    selfGame.stageContext.drawImage(sq.ojos, sq.ojosX, sq.ojosY);
+    img = new Image();
+
+    switch (sq.view) {
+        
+        case DIRECTION_RIGHT:
+            img.src = "Images/Characters/Clothes/Caps/bandanaR.png";
+            selfGame.stageContext.drawImage(img, sq.x - 35, sq.y - 50);
+            break;
+
+        case DIRECTION_LEFT:
+            img.src = "Images/Characters/Clothes/Caps/bandanaL.png";
+            selfGame.stageContext.drawImage(img, sq.x - 30, sq.y - 50);
+            break;
+    }
+
+
+}
+
 GameController.prototype.drawSquarePowerBar = function (sq, position) {
 
         if (position % 2 == 0) {
@@ -109,7 +134,7 @@ GameController.prototype.drawSquarePowerBar = function (sq, position) {
             selfGame.stageContext.stroke();
 
             //draw the damage
-            selfGame.stageContext.fillStyle = "blue";
+            selfGame.stageContext.fillStyle = "black";
             selfGame.stageContext.fillRect(0, (position / 2 * 30) + 3 + LIFE_BAR_HEIGHT, ((sq.elementType.initialPowerPoints - sq.elementType.powerPoints) * selfGame.stage.width * 0.45) / sq.elementType.initialPowerPoints, POWER_BAR_HEIGHT);
             selfGame.stageContext.stroke();
 
